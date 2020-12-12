@@ -1,0 +1,178 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "align": {
+      "options": [
+        "parameters",
+        "statements"
+      ]
+    },
+    "array-type": {
+      "options": [
+        "array"
+      ]
+    },
+    "arrow-return-shorthand": true,
+    "curly": true,
+    "deprecation": {
+      "severity": "warning"
+    },
+    "eofline": true,
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
+    "import-spacing": true,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "interface-over-type-literal": true,
+    "max-line-length": [
+      true,
+      140
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "instance-field",
+          {
+            "name": "public and constructor",
+            "kinds": [
+              "constructor",
+              "public-instance-method"
+            ]
+          },
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
+    "no-consecutive-blank-lines": true,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
+    "no-namespace": false,
+    "no-non-null-assertion": true,
+    "no-switch-case-fall-through": true,
+    "object-literal-key-quotes": {
+      "options": "consistent-as-needed"
+    },
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "ordered-imports": [
+      true,
+      {
+        "module-source-path": "full",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "match": "^environment",
+            "order": 21
+          },
+          {
+            "match": "^app/",
+            "order": 30
+          },
+          {
+            "match": "^[.]",
+            "order": 30
+          },
+          {
+            "name": "node_modules",
+            "match": ".*",
+            "order": 20
+          }
+        ]
+      }
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type",
+      "check-module"
+    ],
+    "component-class-suffix": true,
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
+    ],
+    "contextual-decorator": true,
+    "contextual-lifecycle": true,
+    "directive-class-suffix": true,
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "import-destructuring-spacing": true,
+    "no-attribute-decorator": true,
+    "no-host-metadata-property": true,
+    "no-inputs-metadata-property": true,
+    "no-input-rename": true,
+    "no-lifecycle-call": true,
+    "no-outputs-metadata-property": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-output-native": true,
+    "no-queries-metadata-property": true,
+    "prefer-on-push-component-change-detection": true,
+    "prefer-output-readonly": true,
+    "relative-url-prefix": true,
+    "use-component-selector": true,
+    "use-lifecycle-interface": true,
+    "use-pipe-transform-interface": true
+  },
+  "rulesDirectory": [
+    "codelyzer"
+  ]
+}
