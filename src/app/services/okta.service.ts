@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import OktaSignIn, { IOktaAuth, IOktaWidget } from '@okta/okta-signin-widget';
+import OktaSignIn, { IOkatSignInConfig, IOktaAuth, IOktaWidget } from '@okta/okta-signin-widget';
 
 import { environment } from 'environment';
 
@@ -13,9 +13,9 @@ export class OktaService {
   ) {
     const link = document.createElement('a');
     link.href = environment.okta.issuer;
-    const baseUrl = link.origin;
-    this.widget = ngZone.runOutsideAngular(() => new OktaSignIn({
-      baseUrl,
+
+    const config : IOkatSignInConfig = {
+      baseUrl: link.origin,
       clientId: environment.okta.clientId,
       language: 'en',
       redirectUri: window.location.origin,
@@ -27,7 +27,17 @@ export class OktaService {
         pkce: false,
         responseType: 'token'
       }
-    }));
+    };
+
+    if (environment.okta.samlIdentityProviderId) {
+      config.idps = [
+        { text: 'Use your company credentials.', id: environment.okta.samlIdentityProviderId }
+      ];
+      config.idpDisplay = 'PRIMARY';
+      config.authParams.display = 'popup';
+    }
+
+    this.widget = ngZone.runOutsideAngular(() => new OktaSignIn(config));
     this.okta = this.widget.authClient;
   }
 }
