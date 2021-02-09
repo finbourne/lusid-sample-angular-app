@@ -1,16 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { NEVER } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthService } from 'app/services';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      providers: [
-        { provide: AuthService, useValue: { isLoggedIn: () => NEVER } }
+      imports: [
+        RouterTestingModule
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();

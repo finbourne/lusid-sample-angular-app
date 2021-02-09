@@ -19,6 +19,7 @@
     "@angular/material": "~11.1.2",
     "@angular/platform-browser": "~11.1.2",
     "@angular/platform-browser-dynamic": "~11.1.2",
+    "@angular/router": "~11.1.2",
     "@finbourne/lusid-sdk-angular8": "0.11.2328",
     "@okta/okta-signin-widget": "4.4.3",
     "rxjs": "~6.6.0",
