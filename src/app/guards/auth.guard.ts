@@ -4,6 +4,7 @@ import { filter, take, tap } from 'rxjs/operators';
 
 import { routes } from 'app/app.routes';
 import { AuthService } from 'app/services';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.isLoggedIn()
       .pipe(
         filter(val => val !== undefined),
@@ -25,8 +26,7 @@ export class AuthGuard implements CanActivate {
             this.router.navigate([routes.home]);
           }
         })
-      )
-      .toPromise();
+      );
   }
 
 }
