@@ -1,8 +1,1 @@
-<ng-container [ngSwitch]="isLoggedIn | async">
-  <button *ngSwitchCase="false" (click)="logIn()" mat-raised-button color="primary">Sign In</button>
-  <ng-container *ngSwitchCase="true">
-    <button (click)="logOut()" mat-raised-button color="accent">Sign Out</button>
-    <app-portfolio-list *ngSwitchCase="true"></app-portfolio-list>
-  </ng-container>
-  <mat-spinner *ngSwitchCase="null"></mat-spinner>
-</ng-container>
+<router-outlet></router-outlet>

@@ -14,7 +14,7 @@ export class OktaService {
     const link = document.createElement('a');
     link.href = environment.okta.issuer;
 
-    const config : IOkatSignInConfig = {
+    const config: IOkatSignInConfig = {
       baseUrl: link.origin,
       clientId: environment.okta.clientId,
       language: 'en',

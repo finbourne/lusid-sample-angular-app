@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <a mat-icon-button [routerLink]="routes.home">
+    <mat-icon>home</mat-icon>
+  </a>
+
+  <a *ngIf="isLoggedIn | async" mat-button
+     [routerLink]="[routes.dashboard.index, routes.dashboard.portfolios]"
+     routerLinkActive="mat-primary">Portfolios</a>
+
+  <span class="spacer"></span>
+
+  <ng-container [ngSwitch]="isLoggedIn | async">
+    <button *ngSwitchCase="false" (click)="logIn()" mat-raised-button color="primary">Sign In</button>
+    <ng-container *ngSwitchCase="true">
+      <button (click)="logOut()" mat-raised-button color="accent">Sign Out</button>
+    </ng-container>
+  </ng-container>
+</mat-toolbar>
+
+<mat-card *ngIf="!(isLoggedIn | async)">
+  <mat-card-header>
+    <mat-card-title>LUSID App</mat-card-title>
+    <mat-card-subtitle>Please sign in to continue</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+
+<router-outlet></router-outlet>

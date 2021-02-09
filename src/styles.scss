@@ -1,6 +1,10 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
+body {
+  margin: 0;
+}
+
 #okta-sign-in.auth-container {
   margin: 0;
 }

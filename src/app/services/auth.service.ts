@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { IOktaAuth, IOktaTokens } from '@okta/okta-signin-widget';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
 import { environment } from 'environment';
 
+import { routes } from 'app/app.routes';
 import { LogInComponent } from 'app/components';
 import { OktaService } from './okta.service';
 
@@ -15,7 +17,7 @@ export class AuthService {
 
   private readonly okta: IOktaAuth;
   private readonly tokensUrl: string;
-  private readonly _isLoggedIn = new BehaviorSubject<boolean | null>(null);
+  private readonly _isLoggedIn = new ReplaySubject<boolean>(1);
 
   get token(): Promise<string | null> {
     return new Promise(resolve => {
@@ -29,7 +31,8 @@ export class AuthService {
     private http: HttpClient,
     private matDialog: MatDialog,
     private ngZone: NgZone,
-    private oktaService: OktaService
+    private oktaService: OktaService,
+    private router: Router
   ) {
     this.tokensUrl = `https://${environment.clientCode}.lusid.com/identity/api/tokens`;
     this.okta = oktaService.okta;
@@ -40,12 +43,12 @@ export class AuthService {
       .then(isLoggedIn => this.setLoggedIn(isLoggedIn));
   }
 
-  isLoggedIn(): Observable<boolean | null> {
+  isLoggedIn(): Observable<boolean> {
     return this._isLoggedIn.asObservable();
   }
 
   logIn(): void {
-    this.setLoggedIn(null);
+    this.setLoggedIn(false);
 
     this.getTokenFromSession()
       .catch(() =>
@@ -61,6 +64,7 @@ export class AuthService {
         this.http.delete(this.tokensUrl).subscribe();
         this.okta.closeSession();
         this.setLoggedIn(false);
+        this.router.navigate([routes.home]);
       });
   }
 
@@ -72,7 +76,7 @@ export class AuthService {
     ).then(() => this.okta.token.getWithoutPrompt({ responseType: 'token' }));
   }
 
-  private setLoggedIn(isLoggedIn: boolean | null): void {
+  private setLoggedIn(isLoggedIn: boolean): void {
     this._isLoggedIn.next(isLoggedIn);
   }
 
