@@ -1,4 +1,6 @@
 # Lusid Demo
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sample-angular-app.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sample-angular-app?ref=badge_shield)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
@@ -19,3 +21,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost.lusid.com`. The a
 You need to configure your local host to use `localhost.lusid.com`.
 
 This is a simple demo application for local use. It hasn't been reviewed for security issues.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sample-angular-app.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sample-angular-app?ref=badge_large)
